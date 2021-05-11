@@ -8,7 +8,7 @@
     --btn-color: rgb(58, 9, 122);
 }
 body{
-    font-family: sans-serif;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     font-size: 20px;
 }
 
@@ -57,4 +57,6 @@ button {
 
 button:hover {
     background: var(--secondary-color);
+    cursor:pointer;
+    
 }

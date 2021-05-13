@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,33 @@
     <title>Code Quiz challenge</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
     <header>
-        <div class= "highscore-item" id = "high-score">View High Score</div> 
-        <div class= "timer-item" id = "timer">Time:75</div>
+        <div class="highscore-item" id="high-score">View High Score</div>
+        <div class="timer-item" id="timer">Time:<span id="time">75</span></div>
     </header>
-    <div class = "codequiz-container" id="code-quiz">
-        <div class = "title-item" id = "title">Coding Quiz Challenge</div>
-        <div class = "question-item">
-            Try to answer the following code-related questions within the time limit.
-                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+     <!--Containers for quiz homepage -->
+    <div class="codequiz-container" id="code-quiz">
+        <div class="title-item" id="title">Coding Quiz Challenge</div>
+        <div class="instruct-item" id="instructions">
+            <p>Try to answer the following code-related questions within the time limit.
+            Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         </div>
-
-        <button id="submit">Start Quiz</button>
+        <div class="buttons-container" id="buttons">
+            <button class="btn" id="btnSubmit">Start Quiz</button>
+        </div>
+        <div class="questionContainer" id="questions">
+            <div class="quizQuestions" id="quizQuestions"></div>
+            <div class="quizAnswers" id="quizAnswers"></div>
+        </div>
     </div>
-    
-    
+    <!--Container for quiz questions and button answers -->
+   
+
+
 
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

@@ -6,6 +6,7 @@
     --primary-color: black;
     --secondary-color: rgb(129, 38, 129);
     --btn-color: rgb(58, 9, 122);
+    --questionBorder-color: rgb(212, 209, 209);
 }
 body{
     font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -30,6 +31,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid rgb(240, 239, 239); 
 }
 
 .title-item {
@@ -52,7 +54,7 @@ button {
     outline: none;
     border: none;
     border-radius: 12px;
-    width: 18%;
+    width: 100%;
 }
 
 button:hover {
@@ -60,3 +62,36 @@ button:hover {
     cursor:pointer;
     
 }
+
+.answerBtns {
+    background-color: var(--btn-color);
+    padding: 10px 30px;
+    font-size: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    width: 30%;
+    margin: 10px 300px 0 10px;
+    text-align: left;
+}
+
+.answerBtns:hover {
+    background: var(--secondary-color);
+    cursor:pointer;
+    
+}
+
+.questionContainer {
+    display: inline-block;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-around;
+}
+
+.quizQuestions {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+}
+

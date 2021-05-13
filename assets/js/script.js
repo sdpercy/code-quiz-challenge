@@ -1,72 +1,89 @@
-var submitButtonEl = document.getElementById("btnSubmit")
-var titleEl = document.getElementById("title")
-var homeStatment = document.getElementById("instructions")
-var buttonsEl = document.getElementById("btnSubmit")
-var questions = document.querySelector("quizQuestions");
+var startQuizBtnEl = document.getElementById("btnSubmit");
+var titleEl = document.getElementById("title");
+var homeStatment = document.getElementById("instructions");
+var buttonsEl = document.getElementById("btnSubmit");
+//var questionsEl = document.querySelector("quizQuestions");
 
+var displayedQuestion = 0;
 
-// -------Quiz Array of questions, possible answers and correct answer --------
-var questions1 = 
+// -------Quiz object of questions, possible answers and correct answer --------
+var questionsArray = [
     {question: "Commonly used data types DO Not Include:",
         possibleAnswers: ["1. string", "2. booleans", "3. alerts", "4. numbers"],
-        answer: "alerts"};
-var questions2 = 
+        answer: "alerts",
+},
         {
         question: "The condition in an if/else statement is enclosed with _____________.",
-        possibleAnswers: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-};
-var questions3 = 
+        possibleAnswers: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
+        answer: "parentheses",
+},
+
 {
         question: "Arrays in JavaScript can be used to store _____________.",
-        possibleAnswers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        answer: "all of the above"
-};
-var questions4 = 
+        possibleAnswers: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+        answer: "all of the above",
+},
+
 {
         question: "String values must be enclosed within __________ when being assigned to variables.",
-        possibleAnswers: ["commas", "curly brackets", "quotes", "parentheses"],
-        answer: "quotes"    
-};
-var questions5 =
+        possibleAnswers: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
+        answer: "quotes", 
+},
+
 {
         question: "A very useful tool used during development and debugging for printing content to the debugger is",
-        possibleAnswers: ["JavaScript", "terminal/bash", "for loop", "console.log"],
-        answer: "console.log"
-};
+        possibleAnswers: ["1. JavaScript", "2. terminal/bash", "3. for loop", "4. console.log"],
+        answer: "console.log",
+},
+]
 
-function quizQuestions(){   
-    question1 = document.createElement("p");
-    question1.textContent = questions1.question;
-    question1.className = "quizQuestions";
-    document.getElementById("quizQuestions").appendChild(question1);
+
+function quizQuestions()
+{
+    //add question
+    var questionEl = document.createElement("p");
+    questionEl.textContent = questionsArray[displayedQuestion].question;
+    questionEl.className = "quizQuestions";
+    document.getElementById("quizQuestions").appendChild(questionEl);
     
-}
-
-function createAnswerBtns1(){
-    var answer = questions1.possibleAnswers;
-    for (var i = 0; i <answer.length; i++) {
+    for (var i = 0; i< questionsArray[displayedQuestion].possibleAnswers.length; i++) {
         var answerBtnsEl = document.createElement("button");
-    answerBtnsEl.textContent = answer[i];
+    answerBtnsEl.textContent = questionsArray[displayedQuestion].possibleAnswers[i];
     answerBtnsEl.className = "answerBtns";
+    answerBtnsEl.setAttribute('id', [i]);
     document.getElementById("quizAnswers").appendChild(answerBtnsEl);
     }
-}
+    
+    document.getElementById("0").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+    })
+    
+    document.getElementById("1").addEventListener('click', function(){
+        
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        
+    })
+
+    document.getElementById("2").addEventListener('click', function(){
+        
+        document.getElementById("answer").innerHTML = "Correct Answer"
+        
+    })
+
+    document.getElementById("3").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        
+    })
+    
+}         
 
 
-
-
-submitButtonEl.addEventListener('click', startQuiz)
+startQuizBtnEl.addEventListener('click', startQuiz)
 
 function startQuiz() {
     titleEl.style.display = "none";
     homeStatment.style.display = "none";
-    submitButtonEl.style.display = "none";
+    startQuizBtnEl.style.display = "none";
 
     quizQuestions();
-    createAnswerBtns1();
 }
-
-
-
-

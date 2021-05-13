@@ -31,7 +31,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid rgb(240, 239, 239); 
+    border: 2px solid rgb(148, 144, 144); 
 }
 
 .title-item {
@@ -95,3 +95,8 @@ button:hover {
     font-weight: bold;
 }
 
+.answerStatus{
+    border-top: 2px solid rgb(148, 144, 144); 
+    margin: 40px 0;
+    padding-top: 30px;
+}

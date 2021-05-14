@@ -4,9 +4,12 @@ var homeStatment = document.getElementById("instructions");
 var buttonsEl = document.getElementById("btnSubmit");
 //var questionsEl = document.querySelector("quizQuestions");
 
-
+//Select question from array
 var displayedQuestion1 = 0;
 var displayedQuestion2 = 1;
+var displayedQuestion3 = 2;
+var displayedQuestion4 = 3;
+var displayedQuestion5 = 4;
 
 // -------Quiz object of questions, possible answers and correct answer --------
 var questionsArray = [
@@ -48,7 +51,7 @@ function quizQuestion1()
     questionEl.className = "quizQuestions";
     questionEl.setAttribute("id", "quizQuestion");
     document.getElementById("quizQuestions").appendChild(questionEl);
-    
+    //answer buttons
     for (var i = 0; i< questionsArray[displayedQuestion1].possibleAnswers.length; i++) {
         var answerBtnsEl = document.createElement("button");
     answerBtnsEl.textContent = questionsArray[displayedQuestion1].possibleAnswers[i];
@@ -56,6 +59,7 @@ function quizQuestion1()
     answerBtnsEl.setAttribute('id', [i]);
     document.getElementById("quizAnswers").appendChild(answerBtnsEl);
     }
+    //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
         removeEl();
@@ -75,8 +79,7 @@ function quizQuestion1()
         document.getElementById("answer").innerHTML = "Wrong Answer"
         removeEl();
         quizQuestion2();
-    })
-    
+    }) 
 }
 
 function quizQuestion2()
@@ -85,9 +88,9 @@ function quizQuestion2()
     var questionEl = document.createElement("span");
     questionEl.textContent = questionsArray[displayedQuestion2].question;
     questionEl.className = "quizQuestions";
-    questionEl.setAttribute = ('id', 'quizQuestion');
+    questionEl.setAttribute("id", "quizQuestion");
     document.getElementById("quizQuestions").appendChild(questionEl);
-    
+    //answer buttons
     for (var i = 0; i< questionsArray[displayedQuestion2].possibleAnswers.length; i++) {
         var answerBtnsEl = document.createElement("button");
     answerBtnsEl.textContent = questionsArray[displayedQuestion2].possibleAnswers[i];
@@ -95,7 +98,124 @@ function quizQuestion2()
     answerBtnsEl.setAttribute('id', [i]);
     document.getElementById("quizAnswers").appendChild(answerBtnsEl);
     }
-    
+    //Display if selection was right or wrong
+    document.getElementById("0").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion3();
+    })
+    document.getElementById("1").addEventListener('click', function(){ 
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion3(); 
+    })
+    document.getElementById("2").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Correct Answer"
+        removeEl();
+        quizQuestion3();
+    })
+    document.getElementById("3").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion3(); 
+    })
+}
+
+function quizQuestion3()
+{   
+    //add question
+    var questionEl = document.createElement("span");
+    questionEl.textContent = questionsArray[displayedQuestion3].question;
+    questionEl.className = "quizQuestions";
+    questionEl.setAttribute("id", "quizQuestion");
+    document.getElementById("quizQuestions").appendChild(questionEl);
+    //answer buttons
+    for (var i = 0; i< questionsArray[displayedQuestion3].possibleAnswers.length; i++) {
+        var answerBtnsEl = document.createElement("button");
+    answerBtnsEl.textContent = questionsArray[displayedQuestion3].possibleAnswers[i];
+    answerBtnsEl.className = "answerBtns";
+    answerBtnsEl.setAttribute('id', [i]);
+    document.getElementById("quizAnswers").appendChild(answerBtnsEl);
+    }
+    //Display if selection was right or wrong
+    document.getElementById("0").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion4();
+    })
+    document.getElementById("1").addEventListener('click', function(){ 
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion4(); 
+    })
+    document.getElementById("2").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion4();
+    })
+    document.getElementById("3").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Correct Answer" 
+        removeEl();
+        quizQuestion4();
+    })
+}
+
+function quizQuestion4()
+{   
+    //add question
+    var questionEl = document.createElement("span");
+    questionEl.textContent = questionsArray[displayedQuestion4].question;
+    questionEl.className = "quizQuestions";
+    questionEl.setAttribute("id", "quizQuestion");
+    document.getElementById("quizQuestions").appendChild(questionEl);
+    //answer buttons
+    for (var i = 0; i< questionsArray[displayedQuestion4].possibleAnswers.length; i++) {
+        var answerBtnsEl = document.createElement("button");
+    answerBtnsEl.textContent = questionsArray[displayedQuestion4].possibleAnswers[i];
+    answerBtnsEl.className = "answerBtns";
+    answerBtnsEl.setAttribute('id', [i]);
+    document.getElementById("quizAnswers").appendChild(answerBtnsEl);
+    }
+    //Display if selection was right or wrong
+    document.getElementById("0").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion5();
+    })
+    document.getElementById("1").addEventListener('click', function(){ 
+        document.getElementById("answer").innerHTML = "Wrong Answer" 
+        removeEl();
+        quizQuestion5();
+    })
+    document.getElementById("2").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Correct Answer"
+        removeEl();
+        quizQuestion5();
+    })
+    document.getElementById("3").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer" 
+        removeEl();
+        quizQuestion5();
+    })
+}
+
+function quizQuestion5()
+{   
+    //add question
+    var questionEl = document.createElement("span");
+    questionEl.textContent = questionsArray[displayedQuestion5].question;
+    questionEl.className = "quizQuestions";
+    questionEl.setAttribute("id", "quizQuestion");
+    document.getElementById("quizQuestions").appendChild(questionEl);
+    //answer buttons
+    for (var i = 0; i< questionsArray[displayedQuestion5].possibleAnswers.length; i++) {
+        var answerBtnsEl = document.createElement("button");
+    answerBtnsEl.textContent = questionsArray[displayedQuestion5].possibleAnswers[i];
+    answerBtnsEl.className = "answerBtns";
+    answerBtnsEl.setAttribute('id', [i]);
+    document.getElementById("quizAnswers").appendChild(answerBtnsEl);
+    }
+    //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
     })
@@ -103,20 +223,19 @@ function quizQuestion2()
         document.getElementById("answer").innerHTML = "Wrong Answer" 
     })
     document.getElementById("2").addEventListener('click', function(){
-        document.getElementById("answer").innerHTML = "Correct Answer"
+        document.getElementById("answer").innerHTML = "Wrong Answer"
     })
     document.getElementById("3").addEventListener('click', function(){
-        document.getElementById("answer").innerHTML = "Wrong Answer" 
+        document.getElementById("answer").innerHTML = "Correct Answer" 
     })
-    
 }
 
 function removeEl() {
     var removeQuestionEl = document.getElementById("quizQuestion");
     removeQuestionEl.remove();
     document.querySelectorAll('.answerBtns').forEach(e => e.remove());
-    var removeMessageEl = document.getElementById('answer');
-    removeMessageEl.remove();
+    setTimeout(function(){var removeMessageEl = document.getElementById('answer').textContent = "";}, 500);
+    
 }
 
 startQuizBtnEl.addEventListener('click', startQuiz)

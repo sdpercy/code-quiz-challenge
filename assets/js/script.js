@@ -4,7 +4,9 @@ var homeStatment = document.getElementById("instructions");
 var buttonsEl = document.getElementById("btnSubmit");
 //var questionsEl = document.querySelector("quizQuestions");
 
-var displayedQuestion = 0;
+
+var displayedQuestion1 = 0;
+var displayedQuestion2 = 1;
 
 // -------Quiz object of questions, possible answers and correct answer --------
 var questionsArray = [
@@ -38,17 +40,57 @@ var questionsArray = [
 ]
 
 
-function quizQuestions()
+function quizQuestion1()
 {
     //add question
-    var questionEl = document.createElement("p");
-    questionEl.textContent = questionsArray[displayedQuestion].question;
+    var questionEl = document.createElement("span");
+    questionEl.textContent = questionsArray[displayedQuestion1].question;
     questionEl.className = "quizQuestions";
+    questionEl.setAttribute("id", "quizQuestion");
     document.getElementById("quizQuestions").appendChild(questionEl);
     
-    for (var i = 0; i< questionsArray[displayedQuestion].possibleAnswers.length; i++) {
+    for (var i = 0; i< questionsArray[displayedQuestion1].possibleAnswers.length; i++) {
         var answerBtnsEl = document.createElement("button");
-    answerBtnsEl.textContent = questionsArray[displayedQuestion].possibleAnswers[i];
+    answerBtnsEl.textContent = questionsArray[displayedQuestion1].possibleAnswers[i];
+    answerBtnsEl.className = "answerBtns";
+    answerBtnsEl.setAttribute('id', [i]);
+    document.getElementById("quizAnswers").appendChild(answerBtnsEl);
+    }
+    document.getElementById("0").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion2();
+    })
+    document.getElementById("1").addEventListener('click', function(){ 
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion2();
+    })
+    document.getElementById("2").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Correct Answer"
+        removeEl();
+        quizQuestion2();
+    })
+    document.getElementById("3").addEventListener('click', function(){
+        document.getElementById("answer").innerHTML = "Wrong Answer"
+        removeEl();
+        quizQuestion2();
+    })
+    
+}
+
+function quizQuestion2()
+{   
+    //add question
+    var questionEl = document.createElement("span");
+    questionEl.textContent = questionsArray[displayedQuestion2].question;
+    questionEl.className = "quizQuestions";
+    questionEl.setAttribute = ('id', 'quizQuestion');
+    document.getElementById("quizQuestions").appendChild(questionEl);
+    
+    for (var i = 0; i< questionsArray[displayedQuestion2].possibleAnswers.length; i++) {
+        var answerBtnsEl = document.createElement("button");
+    answerBtnsEl.textContent = questionsArray[displayedQuestion2].possibleAnswers[i];
     answerBtnsEl.className = "answerBtns";
     answerBtnsEl.setAttribute('id', [i]);
     document.getElementById("quizAnswers").appendChild(answerBtnsEl);
@@ -57,26 +99,25 @@ function quizQuestions()
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
     })
-    
-    document.getElementById("1").addEventListener('click', function(){
-        
-        document.getElementById("answer").innerHTML = "Wrong Answer"
-        
+    document.getElementById("1").addEventListener('click', function(){ 
+        document.getElementById("answer").innerHTML = "Wrong Answer" 
     })
-
     document.getElementById("2").addEventListener('click', function(){
-        
         document.getElementById("answer").innerHTML = "Correct Answer"
-        
     })
-
     document.getElementById("3").addEventListener('click', function(){
-        document.getElementById("answer").innerHTML = "Wrong Answer"
-        
+        document.getElementById("answer").innerHTML = "Wrong Answer" 
     })
     
-}         
+}
 
+function removeEl() {
+    var removeQuestionEl = document.getElementById("quizQuestion");
+    removeQuestionEl.remove();
+    document.querySelectorAll('.answerBtns').forEach(e => e.remove());
+    var removeMessageEl = document.getElementById('answer');
+    removeMessageEl.remove();
+}
 
 startQuizBtnEl.addEventListener('click', startQuiz)
 
@@ -85,5 +126,5 @@ function startQuiz() {
     homeStatment.style.display = "none";
     startQuizBtnEl.style.display = "none";
 
-    quizQuestions();
+    quizQuestion1();
 }

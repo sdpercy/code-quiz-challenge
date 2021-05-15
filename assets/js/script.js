@@ -5,6 +5,13 @@ var buttonsEl = document.getElementById("btnSubmit");
 var timeInterval;
 var secondsEl = document.getElementById("timespan").innerText;
 var wrongAnswerEl;
+var questionEl = document.createElement("span");
+var answerBtnsEl = document.createElement("button");
+var removeQuestionEl = document.getElementById("quizQuestions");
+var removeBtnsEl = document.getElementById("quizAnswers");
+var removeAnswerMessageEl = document.getElementById("answer");
+
+
 
 
 //Declared variables
@@ -224,7 +231,7 @@ function quizQuestion5()
     questionEl.className = "quizQuestions";
     questionEl.setAttribute("id", "quizQuestion");
     document.getElementById("quizQuestions").appendChild(questionEl);
-    //answer buttons
+    //create answer buttons
     for (var i = 0; i< questionsArray[displayedQuestion5].possibleAnswers.length; i++) {
         var answerBtnsEl = document.createElement("button");
     answerBtnsEl.textContent = questionsArray[displayedQuestion5].possibleAnswers[i];
@@ -232,11 +239,12 @@ function quizQuestion5()
     answerBtnsEl.setAttribute('id', [i]);
     document.getElementById("quizAnswers").appendChild(answerBtnsEl);
     }
-    //Display if selection was right or wrong
+    //Display if selection was right or wrong after answer button us selected "clicked"
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
         wrongAnswer();
         stopTimer();
+        gameEnd();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer" 
@@ -254,6 +262,40 @@ function quizQuestion5()
     })
 }
 
+function gameEnd() {
+    removeQuestionEl.remove();
+    
+    while(removeBtnsEl.firstChild){
+    removeBtnsEl.removeChild(removeBtnsEl.lastChild);
+    }
+    removeAnswerMessageEl.remove();
+    //add results page
+    var resultsTitleEl = document.getElementById("resultsTitle");
+    resultsTitleEl.innerHTML = "All Done!";
+
+    var finalScoreEl = document.getElementById("finalScore");
+    var timespanText = document.getElementById("timespan").innerText;
+   
+    finalScoreEl.textContent = "Your final score is" + "  " + timespanText;
+
+    var enterInitialsEl = document.createElement("span");
+    enterInitialsEl.innerHTML = "Enter Initials:";
+    enterInitialsEl.className = "spanInit";
+    document.getElementById("enterInitials").appendChild(enterInitialsEl);
+
+    var inputName =document.createElement("input");
+    inputName.type = "text";
+    inputName.className = "inputbox";
+    document.getElementById("enterInitials").appendChild(inputName);
+
+    var submitBtnEl = document.createElement("button");
+    submitBtnEl.textContent = "Submit";
+    submitBtnEl.className = "submitInitialsBtn";
+    document.getElementById("enterInitials").appendChild(submitBtnEl);
+
+}
+
+// reset right/wrong message to nothing for next question
 function removeEl() {
     var removeQuestionEl = document.getElementById("quizQuestion");
     removeQuestionEl.remove();
@@ -261,9 +303,8 @@ function removeEl() {
     setTimeout(function(){var removeMessageEl = document.getElementById('answer').textContent = "";}, 500);
     
 }
-
+//function for game timer
 function gameTimer() {
-    //var secondsEl = document.getElementById("timespan").innerText;
     timeInterval = setInterval(function(){
         secondsEl--;
         document.getElementById('timespan').textContent = secondsEl;
@@ -271,15 +312,15 @@ function gameTimer() {
     }, 1000);
    
 }
-
+//function to stop the game after the game is over
 function stopTimer() {
     clearInterval(timeInterval);
 }
-
+//function to subtract 10 sec from the timer for a wrong answer
 function wrongAnswer() {
     secondsEl = secondsEl - 10;
 }
-
+//Start the quiz on clicking of the  "start Quiz" button
 startQuizBtnEl.addEventListener('click', startQuiz)
 
 function startQuiz() {

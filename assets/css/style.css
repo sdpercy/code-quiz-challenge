@@ -133,6 +133,7 @@ button:hover {
     margin-left: 10px;
     height: 40px;
     width: 30%;
+    font-size: 30px;
 }
 .submitInitialsBtn{
     background-color: var(--btn-color);

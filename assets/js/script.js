@@ -10,16 +10,18 @@ var answerBtnsEl = document.createElement("button");
 var removeQuestionEl = document.getElementById("quizQuestions");
 var removeBtnsEl = document.getElementById("quizAnswers");
 var removeAnswerMessageEl = document.getElementById("answer");
+var storeInitials = document.getElementById("initialsTextbox");
+
 
 
 
 
 //Declared variables
-var displayedQuestion1 = 0;
-var displayedQuestion2 = 1;
-var displayedQuestion3 = 2;
-var displayedQuestion4 = 3;
-var displayedQuestion5 = 4;
+const displayedQuestion1 = 0;
+const displayedQuestion2 = 1;
+const displayedQuestion3 = 2;
+const displayedQuestion4 = 3;
+const displayedQuestion5 = 4;
 
 
 
@@ -250,15 +252,18 @@ function quizQuestion5()
         document.getElementById("answer").innerHTML = "Wrong Answer" 
         wrongAnswer();
         stopTimer();
+        gameEnd();
     })
     document.getElementById("2").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
         wrongAnswer();
         stopTimer();
+        gameEnd();
     })
     document.getElementById("3").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Correct Answer"
-        stopTimer(); 
+        stopTimer();
+        gameEnd(); 
     })
 }
 
@@ -269,7 +274,7 @@ function gameEnd() {
     removeBtnsEl.removeChild(removeBtnsEl.lastChild);
     }
     removeAnswerMessageEl.remove();
-    //add results page
+    //display results page 
     var resultsTitleEl = document.getElementById("resultsTitle");
     resultsTitleEl.innerHTML = "All Done!";
 
@@ -286,22 +291,22 @@ function gameEnd() {
     var inputName =document.createElement("input");
     inputName.type = "text";
     inputName.className = "inputbox";
+    inputName.setAttribute("id", "initialsTextbox");
     document.getElementById("enterInitials").appendChild(inputName);
 
     var submitBtnEl = document.createElement("button");
     submitBtnEl.textContent = "Submit";
     submitBtnEl.className = "submitInitialsBtn";
+    submitBtnEl.setAttribute("id", "submitInitialsBtn");
     document.getElementById("enterInitials").appendChild(submitBtnEl);
-
 }
+
 
 // reset right/wrong message to nothing for next question
 function removeEl() {
     var removeQuestionEl = document.getElementById("quizQuestion");
     removeQuestionEl.remove();
-    document.querySelectorAll('.answerBtns').forEach(e => e.remove());
-    setTimeout(function(){var removeMessageEl = document.getElementById('answer').textContent = "";}, 500);
-    
+    document.querySelectorAll('.answerBtns').forEach(e => e.remove()); 
 }
 //function for game timer
 function gameTimer() {

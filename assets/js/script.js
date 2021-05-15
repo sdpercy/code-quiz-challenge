@@ -4,7 +4,7 @@ var homeStatment = document.getElementById("instructions");
 var buttonsEl = document.getElementById("btnSubmit");
 var timeInterval;
 var secondsEl = document.getElementById("timespan").innerText;
-
+var wrongAnswerEl;
 
 
 //Declared variables
@@ -67,11 +67,13 @@ function quizQuestion1()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion2();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion2();
     })
@@ -82,6 +84,7 @@ function quizQuestion1()
     })
     document.getElementById("3").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion2();
     }) 
@@ -106,11 +109,13 @@ function quizQuestion2()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion3();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion3(); 
     })
@@ -121,6 +126,7 @@ function quizQuestion2()
     })
     document.getElementById("3").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion3(); 
     })
@@ -145,16 +151,19 @@ function quizQuestion3()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion4();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion4(); 
     })
     document.getElementById("2").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion4();
     })
@@ -184,11 +193,13 @@ function quizQuestion4()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         removeEl();
         quizQuestion5();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer" 
+        wrongAnswer();
         removeEl();
         quizQuestion5();
     })
@@ -199,6 +210,7 @@ function quizQuestion4()
     })
     document.getElementById("3").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer" 
+        wrongAnswer();
         removeEl();
         quizQuestion5();
     })
@@ -223,14 +235,17 @@ function quizQuestion5()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         stopTimer();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer" 
+        wrongAnswer();
         stopTimer();
     })
     document.getElementById("2").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        wrongAnswer();
         stopTimer();
     })
     document.getElementById("3").addEventListener('click', function(){
@@ -262,7 +277,7 @@ function stopTimer() {
 }
 
 function wrongAnswer() {
-
+    secondsEl = secondsEl - 10;
 }
 
 startQuizBtnEl.addEventListener('click', startQuiz)

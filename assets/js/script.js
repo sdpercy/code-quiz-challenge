@@ -2,14 +2,19 @@ var startQuizBtnEl = document.getElementById("btnSubmit");
 var titleEl = document.getElementById("title");
 var homeStatment = document.getElementById("instructions");
 var buttonsEl = document.getElementById("btnSubmit");
-//var questionsEl = document.querySelector("quizQuestions");
+var timeInterval;
+var secondsEl = document.getElementById("timespan").innerText;
 
-//Select question from array
+
+
+//Declared variables
 var displayedQuestion1 = 0;
 var displayedQuestion2 = 1;
 var displayedQuestion3 = 2;
 var displayedQuestion4 = 3;
 var displayedQuestion5 = 4;
+
+
 
 // -------Quiz object of questions, possible answers and correct answer --------
 var questionsArray = [
@@ -218,15 +223,19 @@ function quizQuestion5()
     //Display if selection was right or wrong
     document.getElementById("0").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        stopTimer();
     })
     document.getElementById("1").addEventListener('click', function(){ 
         document.getElementById("answer").innerHTML = "Wrong Answer" 
+        stopTimer();
     })
     document.getElementById("2").addEventListener('click', function(){
         document.getElementById("answer").innerHTML = "Wrong Answer"
+        stopTimer();
     })
     document.getElementById("3").addEventListener('click', function(){
-        document.getElementById("answer").innerHTML = "Correct Answer" 
+        document.getElementById("answer").innerHTML = "Correct Answer"
+        stopTimer(); 
     })
 }
 
@@ -238,6 +247,24 @@ function removeEl() {
     
 }
 
+function gameTimer() {
+    //var secondsEl = document.getElementById("timespan").innerText;
+    timeInterval = setInterval(function(){
+        secondsEl--;
+        document.getElementById('timespan').textContent = secondsEl;
+        if (secondsEl <= 0) clearInterval(timeInterval);
+    }, 1000);
+   
+}
+
+function stopTimer() {
+    clearInterval(timeInterval);
+}
+
+function wrongAnswer() {
+
+}
+
 startQuizBtnEl.addEventListener('click', startQuiz)
 
 function startQuiz() {
@@ -246,4 +273,5 @@ function startQuiz() {
     startQuizBtnEl.style.display = "none";
 
     quizQuestion1();
+    gameTimer();
 }

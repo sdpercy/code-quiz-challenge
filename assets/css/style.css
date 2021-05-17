@@ -40,6 +40,12 @@ header {
     font-weight: bold;
 }
 
+.title-item1 {
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .question-item {
     padding:30px 100px;
     text-align: center;
@@ -80,6 +86,19 @@ button:hover {
     background: var(--secondary-color);
     cursor:pointer;
     
+}
+
+.btnscore{
+    background-color: var(--btn-color);
+    padding: 10px 30px;
+    font-size: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    width: 30%;
+    margin: 10px 300px 0 10px;
+    text-align: left;
 }
 
 .questionContainer {
@@ -147,3 +166,4 @@ button:hover {
     margin-left: 20px;
     text-align: center;
 }
+

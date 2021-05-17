@@ -361,8 +361,6 @@ function startQuiz() {
     gameTimer();
 }
 
-var displayscore = getElementById("playerScores");
-displayscore.textContent = localStorage.getItem(playerSting);
-document.getElementById("playerScores").appendChild(displayscore);
+
 
 

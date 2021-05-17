@@ -12,7 +12,10 @@ var removeBtnsEl = document.getElementById("quizAnswers");
 var removeAnswerMessageEl = document.getElementById("answer");
 var storeInitials = document.getElementById("initialsTextbox");
 
+var timespanText = document.getElementById("timespan").innerText;
+var scoreEl = document.getElementById("finalScore");
 
+var highscoreTitles = document.getElementById("title1");
 
 
 
@@ -278,10 +281,12 @@ function gameEnd() {
     var resultsTitleEl = document.getElementById("resultsTitle");
     resultsTitleEl.innerHTML = "All Done!";
 
-    var finalScoreEl = document.getElementById("finalScore");
-    var timespanText = document.getElementById("timespan").innerText;
    
-    finalScoreEl.textContent = "Your final score is" + "  " + timespanText;
+    var scoreEl = document.createElement("span");
+    scoreEl.setAttribute("id", "finalScore");
+    scoreEl.name = "PlayerName";
+    scoreEl.textContent = "Your final score is" + "  " + secondsEl;
+    document.getElementById("finalScore").appendChild(scoreEl);
 
     var enterInitialsEl = document.createElement("span");
     enterInitialsEl.innerHTML = "Enter Initials:";
@@ -292,15 +297,34 @@ function gameEnd() {
     inputName.type = "text";
     inputName.className = "inputbox";
     inputName.setAttribute("id", "initialsTextbox");
+    inputName.name = "PlayerName";
     document.getElementById("enterInitials").appendChild(inputName);
 
     var submitBtnEl = document.createElement("button");
     submitBtnEl.textContent = "Submit";
     submitBtnEl.className = "submitInitialsBtn";
-    submitBtnEl.setAttribute("id", "submitInitialsBtn");
+    submitBtnEl.setAttribute("id", "submitBtn");
+    submitBtnEl.onclick = "storeScore()";
     document.getElementById("enterInitials").appendChild(submitBtnEl);
-}
 
+    //store score in local storage
+    var submitBtnEl = document.getElementById("submitBtn");
+    
+    submitBtnEl.addEventListener('click', storeScore)
+    function storeScore(){
+        
+        var playersInit = document.getElementById("initialsTextbox").value;
+    
+        var playerEl= {
+            playerInitials: playersInit,
+            playerScore: secondsEl
+        };
+    
+        var playerSting = JSON.stringify(playerEl);
+        localStorage.setItem(playerSting);
+        
+    }
+}
 
 // reset right/wrong message to nothing for next question
 function removeEl() {
@@ -336,3 +360,9 @@ function startQuiz() {
     quizQuestion1();
     gameTimer();
 }
+
+var displayscore = getElementById("playerScores");
+displayscore.textContent = localStorage.getItem(playerSting);
+document.getElementById("playerScores").appendChild(displayscore);
+
+

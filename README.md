@@ -8,6 +8,8 @@
 4. Score and initials stored in localstorage after clicking the "submit" button.
 5. Return to play again.
 
+Here is the URL:https://sdpercy.github.io/code-quiz-challenge/
+
 ![image](https://user-images.githubusercontent.com/78440638/118418787-76d4ba80-b694-11eb-81ba-30a5701605d6.png)
 
 
